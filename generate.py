@@ -9,6 +9,7 @@
 import re
 import os
 import json
+import sys
 from pathlib import Path
 from jinja2 import Template
 
@@ -46,6 +47,10 @@ FONT = load_font_config()
 # -------------------------------------------------------------------
 def main():
     template = load_template("warpd.config.jinja")
+
+    if '--debug' in sys.argv:
+        print(f'{BASE16=}')
+        print(f'{FONT=}')
     print(template.render(base16=BASE16, font=FONT))
 
 
